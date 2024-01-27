@@ -1,5 +1,5 @@
-let xOff = 15; // Adjusted for faster movement
-let yOff = 15; // Adjusted for faster movement
+let xOff = 15;
+let yOff = 15;
 let xPosArray = [];
 let yPosArray = [];
 
@@ -17,39 +17,36 @@ function initializeBox() {
 }
 
 function newXlt(index) {
-    xOff = randomRange(-20, -10); // Adjusted for faster movement
+    xOff = randomRange(-20, -10);
     window.focus();
 }
 
 function newXrt(index) {
-    xOff = randomRange(10, 20); // Adjusted for faster movement
+    xOff = randomRange(10, 20);
 }
 
 function newYup(index) {
-    yOff = randomRange(-20, -10); // Adjusted for faster movement
+    yOff = randomRange(-20, -10);
 }
 
 function newYdn(index) {
-    yOff = randomRange(10, 20); // Adjusted for faster movement
+    yOff = randomRange(10, 20);
 }
 
 function playBox(index) {
-    newXlt(index);
-    newYup(index);
-
     xPosArray[index] += xOff;
     yPosArray[index] += yOff;
 
     if (xPosArray[index] > screen.width - 175 || xPosArray[index] < 0) {
-        newXrt(index);
+        xOff = -xOff; // Reverse direction when hitting the left or right wall
     }
 
     if (yPosArray[index] > screen.height - 100 || yPosArray[index] < 0) {
-        newYdn(index);
+        yOff = -yOff; // Reverse direction when hitting the top or bottom wall
     }
 
     window.moveTo(xPosArray[index], yPosArray[index]);
-    setTimeout(() => playBox(index), 100); // Adjusted for faster movement
+    setTimeout(() => playBox(index), 100);
 }
 
 window.onload = function () {

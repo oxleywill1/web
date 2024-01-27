@@ -2,8 +2,6 @@ let xOff = 5;
 let yOff = 5;
 let xPos = 400;
 let yPos = -100;
-let popupsCount = 3;
-let openedPopups = 0;
 
 function randomRange(min, max) {
     min = Math.ceil(min);
@@ -12,26 +10,11 @@ function randomRange(min, max) {
 }
 
 function openWindow(url) {
-    return window.open(
+    window.open(
         url,
         "_blank",
         'menubar=no,status=no,toolbar=no,resizable=no,width=350,height=370,titlebar=no,alwaysRaised=yes'
     );
-}
-
-function proCreate(count) {
-    for (let i = 0; i < count; i++) {
-        const newPopup = openWindow('popup.html');
-        if (newPopup) {
-            openedPopups++;
-            newPopup.addEventListener('beforeunload', function () {
-                openedPopups--;
-            });
-        } else {
-            // If unable to open a new popup, stop trying
-            break;
-        }
-    }
 }
 
 function newXlt() {
@@ -69,10 +52,12 @@ function playBall() {
     }
 
     window.moveTo(xPos, yPos);
-    setTimeout(playBall, 1);
+    setTimeout(() => {
+        openWindow('popup.html');
+        playBall();
+    }, 500);
 }
 
 window.onload = function () {
-    proCreate(popupsCount);
     playBall();
 };

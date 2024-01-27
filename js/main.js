@@ -24,6 +24,9 @@ function proCreate(count) {
         const newPopup = openWindow('popup.html');
         if (newPopup) {
             openedPopups++;
+            newPopup.addEventListener('beforeunload', function () {
+                openedPopups--;
+            });
         } else {
             // If unable to open a new popup, stop trying
             break;

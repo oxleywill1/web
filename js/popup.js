@@ -1,5 +1,5 @@
-let xOff = 5;
-let yOff = 5;
+let xOff = 2; // Adjusted for slower movement
+let yOff = 2; // Adjusted for slower movement
 let xPos = 400;
 let yPos = -100;
 
@@ -10,20 +10,20 @@ function randomRange(min, max) {
 }
 
 function newXlt() {
-    xOff = Math.ceil(-6 * Math.random()) * 5 - 10;
+    xOff = Math.ceil(-3 * Math.random()) * 2 - 4; // Adjusted for slower movement
     window.focus();
 }
 
 function newXrt() {
-    xOff = Math.ceil(7 * Math.random()) * 5 - 10;
+    xOff = Math.ceil(4 * Math.random()) * 2 - 4; // Adjusted for slower movement
 }
 
 function newYup() {
-    yOff = Math.ceil(-6 * Math.random()) * 5 - 10;
+    yOff = Math.ceil(-3 * Math.random()) * 2 - 4; // Adjusted for slower movement
 }
 
 function newYdn() {
-    yOff = Math.ceil(7 * Math.random()) * 5 - 10;
+    yOff = Math.ceil(4 * Math.random()) * 2 - 4; // Adjusted for slower movement
 }
 
 function playBall() {
@@ -44,7 +44,7 @@ function playBall() {
     }
 
     window.moveTo(xPos, yPos);
-    setTimeout(playBall, 1);
+    setTimeout(playBall, 10); // Adjusted for slower movement
 }
 
 window.onload = function () {

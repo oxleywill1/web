@@ -1,5 +1,5 @@
-let xOff = 5; // Adjusted for faster movement
-let yOff = 5; // Adjusted for faster movement
+let xOff = 15; // Adjusted for faster movement
+let yOff = 15; // Adjusted for faster movement
 let xPosArray = [];
 let yPosArray = [];
 
@@ -17,20 +17,20 @@ function initializeBox() {
 }
 
 function newXlt(index) {
-    xOff = randomRange(-10, -5); // Adjusted for faster movement
+    xOff = randomRange(-20, -10); // Adjusted for faster movement
     window.focus();
 }
 
 function newXrt(index) {
-    xOff = randomRange(5, 10); // Adjusted for faster movement
+    xOff = randomRange(10, 20); // Adjusted for faster movement
 }
 
 function newYup(index) {
-    yOff = randomRange(-10, -5); // Adjusted for faster movement
+    yOff = randomRange(-20, -10); // Adjusted for faster movement
 }
 
 function newYdn(index) {
-    yOff = randomRange(5, 10); // Adjusted for faster movement
+    yOff = randomRange(10, 20); // Adjusted for faster movement
 }
 
 function playBox(index) {
@@ -49,7 +49,7 @@ function playBox(index) {
     }
 
     window.moveTo(xPosArray[index], yPosArray[index]);
-    setTimeout(() => playBox(index), 500); // Adjusted for faster movement
+    setTimeout(() => playBox(index), 100); // Adjusted for faster movement
 }
 
 window.onload = function () {

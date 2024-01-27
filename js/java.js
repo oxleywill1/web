@@ -8,7 +8,7 @@ let overlap = false;
 
 function audioPlay() {
     if (!overlap) {
-        audio.currentTime = 0;
+        audio.currentTime = 0; 
         audio.play();
     } else {
         ovlap.currentTime = 0;

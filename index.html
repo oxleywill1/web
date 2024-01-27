@@ -7,11 +7,17 @@
 <body onload="init();">
     <p id="idiot">Happy Birthday EBONY!</p>
 
-    <!-- Audio element for background music -->
-    <audio id="backgroundMusic" src="https://ebonysbirthday.com/song/song_song.mp3" loop autoplay muted></audio>
-
+    <!-- Audio element for background music with a 2-second delay -->
+    <audio id="backgroundMusic" src="https://ebonysbirthday.com/song/song_song.mp3" loop autoplay></audio>
 
     <!-- Your JavaScript file -->
     <script src="js/main.js"></script>
+
+    <script>
+        // Delay the start of the music by 2 seconds
+        setTimeout(function() {
+            document.getElementById('backgroundMusic').play();
+        }, 2000);
+    </script>
 </body>
 </html>

@@ -1,72 +1,68 @@
-if (top.location != location) {
-  top.location.href = location.href;
+let xOff = 5;
+let yOff = 5;
+let xPos = 400;
+let yPos = -100;
+let popupsCount = 3;
+
+function randomRange(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
-function reopen() {
-  window.open(
-    "popup.html",
-    "",
-    "blankmenubar=no,status=no,toolbar=noresizable=no,width=350,height=370,titlebar=no,alwaysRaised=yes"
-  );
+
+function openWindow(url) {
+    window.open(
+        url,
+        "_blank",
+        'menubar=no,status=no,toolbar=no,resizable=no,width=350,height=370,titlebar=no,alwaysRaised=yes'
+    );
 }
-function spam() {
-  for (var i = 0; i < 10; i++) {
-    reopen();
-  }
-  return "You are an idiot!";
+
+function proCreate(count) {
+    for (let i = 0; i < count; i++) {
+        openWindow('popup.html');
+    }
 }
-function init() {
-  document.body.onclick = reopen;
-  document.body.onmouseover = reopen;
-  document.body.onmousemove = reopen;
-  window.onunload = spam;
-  window.onbeforeunload = spam;
-  playBall();
-  if (bookmark) {
-    bookmark();
-  }
-  reopen();
-  setTimeout(function () {
-    window.close();
-  }, 10000);
-}
-var xOff = 5,
-  yOff = 5,
-  xPos = 400,
-  yPos = -100,
-  flagRun = true;
+
 function newXlt() {
-  xOff = Math.ceil(0 - 6 * Math.random()) * 5 - 10;
-  window.focus();
+    xOff = Math.ceil(-6 * Math.random()) * 5 - 10;
+    window.focus();
 }
+
 function newXrt() {
-  xOff = Math.ceil(7 * Math.random()) * 5 - 10;
+    xOff = Math.ceil(7 * Math.random()) * 5 - 10;
 }
+
 function newYup() {
-  yOff = Math.ceil(0 - 6 * Math.random()) * 5 - 10;
+    yOff = Math.ceil(-6 * Math.random()) * 5 - 10;
 }
+
 function newYdn() {
-  yOff = Math.ceil(7 * Math.random()) * 5 - 10;
+    yOff = Math.ceil(7 * Math.random()) * 5 - 10;
 }
-function fOff() {
-  flagrun = false;
-}
+
 function playBall() {
-  xPos += xOff;
-  yPos += yOff;
-  if (xPos > screen.width - 175) {
-    newXlt();
-  }
-  if (xPos < 0) {
-    newXrt();
-  }
-  if (yPos > screen.height - 100) {
-    newYup();
-  }
-  if (yPos < 0) {
-    newYdn();
-  }
-  if (flagRun) {
+    xPos += xOff;
+    yPos += yOff;
+
+    if (xPos > screen.width - 175) {
+        newXlt();
+    }
+    if (xPos < 0) {
+        newXrt();
+    }
+    if (yPos > screen.height - 100) {
+        newYup();
+    }
+    if (yPos < 0) {
+        newYdn();
+    }
+
     window.moveTo(xPos, yPos);
     setTimeout(playBall, 1);
-  }
 }
+
+window.onload = function () {
+    proCreate(popupsCount);
+    playBall();
+};

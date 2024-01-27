@@ -12,7 +12,7 @@ function randomRange(min, max) {
 }
 
 function openWindow(url) {
-    window.open(
+    return window.open(
         url,
         "_blank",
         'menubar=no,status=no,toolbar=no,resizable=no,width=350,height=370,titlebar=no,alwaysRaised=yes'
@@ -21,8 +21,13 @@ function openWindow(url) {
 
 function proCreate(count) {
     for (let i = 0; i < count; i++) {
-        openWindow('popup.html');
-        openedPopups++;
+        const newPopup = openWindow('popup.html');
+        if (newPopup) {
+            openedPopups++;
+        } else {
+            // If unable to open a new popup, stop trying
+            break;
+        }
     }
 }
 

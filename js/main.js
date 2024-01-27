@@ -50,7 +50,7 @@ function playBox(index) {
         newYdn(index);
     }
 
-    window.open('about:blank', '_blank', 'width=357,height=330,top=' + yPosArray[index] + ',left=' + xPosArray[index]);
+    window.open('popup.html', '_blank', 'width=357,height=330,top=' + yPosArray[index] + ',left=' + xPosArray[index]);
 
     popupCount++;
 

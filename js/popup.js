@@ -1,7 +1,7 @@
-let xOff = 2; // Adjusted for slower movement
-let yOff = 2; // Adjusted for slower movement
-let xPos = 400;
-let yPos = -100;
+let xOff = 5; // Adjusted for faster movement
+let yOff = 5; // Adjusted for faster movement
+let xPosArray = [];
+let yPosArray = [];
 
 function randomRange(min, max) {
     min = Math.ceil(min);
@@ -9,42 +9,53 @@ function randomRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-function newXlt() {
-    xOff = randomRange(-4, -2); // Adjusted for slower movement
+function initializeBox() {
+    for (let i = 0; i < 3; i++) {
+        xPosArray[i] = randomRange(0, screen.width - 175);
+        yPosArray[i] = randomRange(0, screen.height - 100);
+    }
+}
+
+function newXlt(index) {
+    xOff = randomRange(-10, -5); // Adjusted for faster movement
     window.focus();
 }
 
-function newXrt() {
-    xOff = randomRange(2, 4); // Adjusted for slower movement
+function newXrt(index) {
+    xOff = randomRange(5, 10); // Adjusted for faster movement
 }
 
-function newYup() {
-    yOff = randomRange(-4, -2); // Adjusted for slower movement
+function newYup(index) {
+    yOff = randomRange(-10, -5); // Adjusted for faster movement
 }
 
-function newYdn() {
-    yOff = randomRange(2, 4); // Adjusted for slower movement
+function newYdn(index) {
+    yOff = randomRange(5, 10); // Adjusted for faster movement
 }
 
-function playBox() {
-    newXlt();
-    newYup();
+function playBox(index) {
+    newXlt(index);
+    newYup(index);
 
-    xPos += xOff;
-    yPos += yOff;
+    xPosArray[index] += xOff;
+    yPosArray[index] += yOff;
 
-    if (xPos > screen.width - 175 || xPos < 0) {
-        newXrt();
+    if (xPosArray[index] > screen.width - 175 || xPosArray[index] < 0) {
+        newXrt(index);
     }
 
-    if (yPos > screen.height - 100 || yPos < 0) {
-        newYdn();
+    if (yPosArray[index] > screen.height - 100 || yPosArray[index] < 0) {
+        newYdn(index);
     }
 
-    window.moveTo(xPos, yPos);
-    setTimeout(playBox, 1000); // Adjusted for slower movement
+    window.moveTo(xPosArray[index], yPosArray[index]);
+    setTimeout(() => playBox(index), 500); // Adjusted for faster movement
 }
 
 window.onload = function () {
-    playBox();
+    initializeBox();
+
+    for (let i = 0; i < 3; i++) {
+        playBox(i);
+    }
 };

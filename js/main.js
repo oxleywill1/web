@@ -2,7 +2,7 @@ let xOff = 15; // Adjusted for faster movement
 let yOff = 15; // Adjusted for faster movement
 let xPosArray = [];
 let yPosArray = [];
-let maxPopups = 3; // Maximum number of popups to open
+let maxPopups = 4; // Maximum number of popups to open
 let popupCount = 0;
 
 function randomRange(min, max) {

@@ -3,6 +3,7 @@ let yOff = 5;
 let xPos = 400;
 let yPos = -100;
 let popupsCount = 3;
+let openedPopups = 0;
 
 function randomRange(min, max) {
     min = Math.ceil(min);
@@ -21,6 +22,7 @@ function openWindow(url) {
 function proCreate(count) {
     for (let i = 0; i < count; i++) {
         openWindow('popup.html');
+        openedPopups++;
     }
 }
 

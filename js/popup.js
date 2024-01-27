@@ -10,43 +10,41 @@ function randomRange(min, max) {
 }
 
 function newXlt() {
-    xOff = Math.ceil(-3 * Math.random()) * 2 - 4; // Adjusted for slower movement
+    xOff = randomRange(-4, -2); // Adjusted for slower movement
     window.focus();
 }
 
 function newXrt() {
-    xOff = Math.ceil(4 * Math.random()) * 2 - 4; // Adjusted for slower movement
+    xOff = randomRange(2, 4); // Adjusted for slower movement
 }
 
 function newYup() {
-    yOff = Math.ceil(-3 * Math.random()) * 2 - 4; // Adjusted for slower movement
+    yOff = randomRange(-4, -2); // Adjusted for slower movement
 }
 
 function newYdn() {
-    yOff = Math.ceil(4 * Math.random()) * 2 - 4; // Adjusted for slower movement
+    yOff = randomRange(2, 4); // Adjusted for slower movement
 }
 
-function playBall() {
+function playBox() {
+    newXlt();
+    newYup();
+
     xPos += xOff;
     yPos += yOff;
 
-    if (xPos > screen.width - 175) {
-        newXlt();
-    }
-    if (xPos < 0) {
+    if (xPos > screen.width - 175 || xPos < 0) {
         newXrt();
     }
-    if (yPos > screen.height - 100) {
-        newYup();
-    }
-    if (yPos < 0) {
+
+    if (yPos > screen.height - 100 || yPos < 0) {
         newYdn();
     }
 
     window.moveTo(xPos, yPos);
-    setTimeout(playBall, 10); // Adjusted for slower movement
+    setTimeout(playBox, 1000); // Adjusted for slower movement
 }
 
 window.onload = function () {
-    playBall();
+    playBox();
 };

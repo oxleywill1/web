@@ -4,7 +4,11 @@ let xPosArray = [];
 let yPosArray = [];
 let maxPopups = 4; // Maximum number of popups to open
 let popupCount = 0;
-
+document.addEventListener('click', musicPlay);
+function musicPlay() {
+    document.getElementById('ID').play();
+    document.removeEventListener('click', musicPlay);
+}
 function randomRange(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
